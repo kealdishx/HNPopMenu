@@ -11,4 +11,5 @@
 ```objective-c
 [HNQQPopMenuManager showPopMenuWithView:<#view#> items:<#array#> delegate:<#delegate#>];
 ```
-![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif)
+
+![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif =400×600)
