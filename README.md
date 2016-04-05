@@ -12,4 +12,4 @@
 [HNQQPopMenuManager showPopMenuWithView:<#view#> items:<#array#> delegate:<#delegate#>];
 ```
 
-![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif =400×600)
+![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif)
