@@ -13,6 +13,10 @@
 		1B093CA31CAF5621009653AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B093CA11CAF5621009653AC /* Main.storyboard */; };
 		1B093CA51CAF5621009653AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B093CA41CAF5621009653AC /* Assets.xcassets */; };
 		1B093CA81CAF5621009653AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B093CA61CAF5621009653AC /* LaunchScreen.storyboard */; };
+		1B093CB61CAF571F009653AC /* HNQQPopMenuManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B093CB51CAF571F009653AC /* HNQQPopMenuManager.m */; };
+		1B093CB91CAF5970009653AC /* HNQQPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B093CB81CAF5970009653AC /* HNQQPopMenuView.m */; };
+		1B093CBF1CAF5EB1009653AC /* HNPopMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B093CBE1CAF5EB1009653AC /* HNPopMenuTableViewCell.m */; };
+		1B093CC51CAF9540009653AC /* HNQQPopMenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B093CC41CAF9540009653AC /* HNQQPopMenuModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,14 @@
 		1B093CA41CAF5621009653AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B093CA71CAF5621009653AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B093CA91CAF5621009653AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B093CB41CAF571F009653AC /* HNQQPopMenuManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNQQPopMenuManager.h; sourceTree = "<group>"; };
+		1B093CB51CAF571F009653AC /* HNQQPopMenuManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNQQPopMenuManager.m; sourceTree = "<group>"; };
+		1B093CB71CAF5970009653AC /* HNQQPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNQQPopMenuView.h; sourceTree = "<group>"; };
+		1B093CB81CAF5970009653AC /* HNQQPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNQQPopMenuView.m; sourceTree = "<group>"; };
+		1B093CBD1CAF5EB1009653AC /* HNPopMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNPopMenuTableViewCell.h; sourceTree = "<group>"; };
+		1B093CBE1CAF5EB1009653AC /* HNPopMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNPopMenuTableViewCell.m; sourceTree = "<group>"; };
+		1B093CC31CAF9540009653AC /* HNQQPopMenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HNQQPopMenuModel.h; sourceTree = "<group>"; };
+		1B093CC41CAF9540009653AC /* HNQQPopMenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HNQQPopMenuModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 		1B093C971CAF5621009653AC /* HNQQPopMenu */ = {
 			isa = PBXGroup;
 			children = (
+				1B093CB31CAF5713009653AC /* HNQQPopmenu */,
 				1B093C9B1CAF5621009653AC /* AppDelegate.h */,
 				1B093C9C1CAF5621009653AC /* AppDelegate.m */,
 				1B093C9E1CAF5621009653AC /* ViewController.h */,
@@ -77,6 +90,21 @@
 				1B093C991CAF5621009653AC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1B093CB31CAF5713009653AC /* HNQQPopmenu */ = {
+			isa = PBXGroup;
+			children = (
+				1B093CB41CAF571F009653AC /* HNQQPopMenuManager.h */,
+				1B093CB51CAF571F009653AC /* HNQQPopMenuManager.m */,
+				1B093CB71CAF5970009653AC /* HNQQPopMenuView.h */,
+				1B093CB81CAF5970009653AC /* HNQQPopMenuView.m */,
+				1B093CBD1CAF5EB1009653AC /* HNPopMenuTableViewCell.h */,
+				1B093CBE1CAF5EB1009653AC /* HNPopMenuTableViewCell.m */,
+				1B093CC31CAF9540009653AC /* HNQQPopMenuModel.h */,
+				1B093CC41CAF9540009653AC /* HNQQPopMenuModel.m */,
+			);
+			path = HNQQPopmenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,11 +133,13 @@
 		1B093C8D1CAF5621009653AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HN;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Zakariyya;
 				TargetAttributes = {
 					1B093C941CAF5621009653AC = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9QL89B559R;
 					};
 				};
 			};
@@ -151,7 +181,11 @@
 			files = (
 				1B093CA01CAF5621009653AC /* ViewController.m in Sources */,
 				1B093C9D1CAF5621009653AC /* AppDelegate.m in Sources */,
+				1B093CB61CAF571F009653AC /* HNQQPopMenuManager.m in Sources */,
+				1B093CC51CAF9540009653AC /* HNQQPopMenuModel.m in Sources */,
 				1B093C9A1CAF5621009653AC /* main.m in Sources */,
+				1B093CBF1CAF5EB1009653AC /* HNPopMenuTableViewCell.m in Sources */,
+				1B093CB91CAF5970009653AC /* HNQQPopMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +299,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HNQQPopMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zakariyya.HNQQPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -276,10 +313,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HNQQPopMenu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zakariyya.HNQQPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -302,6 +342,7 @@
 				1B093CAE1CAF5621009653AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

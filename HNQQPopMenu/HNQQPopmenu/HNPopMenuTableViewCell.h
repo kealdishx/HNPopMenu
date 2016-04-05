@@ -10,4 +10,6 @@
 
 @interface HNPopMenuTableViewCell : UITableViewCell
 
+- (instancetype)initWithTableView:(UITableView *)tableView;
+
 @end

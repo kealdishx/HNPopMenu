@@ -7,21 +7,52 @@
 //
 
 #import "ViewController.h"
+#import "HNQQPopMenuManager.h"
+#import "HNQQPopMenuModel.h"
 
-@interface ViewController ()
+@interface ViewController ()<HNQQPopMenuViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *rightButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *leftButton;
+
+@property (nonatomic,strong) NSArray *dataArr;
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+- (NSArray *)dataArr{
+    if (!_dataArr) {
+        NSMutableArray *tempArr = [NSMutableArray array];
+        NSArray *titleArr = @[@"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱"];
+        for (int i = 1; i < 7; i++) {
+            HNQQPopMenuModel *model = [[HNQQPopMenuModel alloc] init];
+            model.title = titleArr[i - 1];
+            model.imageName = [NSString stringWithFormat:@"menu_%d",i];
+            [tempArr addObject:model];
+        }
+        _dataArr = [tempArr mutableCopy];
+    }
+    return _dataArr;
+}
+- (IBAction)addLeftPopMenu {
+    [HNQQPopMenuManager showPopMenuWithView:self.leftButton items:self.dataArr delegate:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)addRightPopMenu:(id)sender {
+    [HNQQPopMenuManager showPopMenuWithView:self.rightButton items:self.dataArr action:^(NSInteger row) {
+        NSLog(@"第%ld行被点击了",row);
+    }];
 }
+
+
+
+- (void)QQPopMenuView:(HNQQPopMenuView *)menuView didSelectRow:(NSInteger)row{
+    NSLog(@"第%ld行被点击了",row);
+}
+
+
+
 
 @end

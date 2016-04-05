@@ -8,8 +8,41 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HNQQDropMenuView : UIView
+typedef void (^action)(NSInteger row);
 
-@property (nonatomic,strong) UITableView *tableView;
+@class HNQQPopMenuView;
+
+@protocol HNQQPopMenuViewDelegate <NSObject>
+
+@optional
+
+- (void)QQPopMenuView:(HNQQPopMenuView *)menuView didSelectRow:(NSInteger)row;
+
+@end
+
+@interface HNQQPopMenuView : UIView
+
+/**
+ *  popmenu's width,default is 150.
+ */
+@property (nonatomic,assign) CGFloat menuWidth;
+
+/**
+ *  menu cell's height,default is 40.
+ */
+@property (nonatomic,assign) CGFloat cellHeight;
+
+// menuView's tableView,menu cell's container.
+@property (nonatomic,strong,readonly) UITableView *tableView;
+
+@property (nonatomic,strong) CAShapeLayer *triangleLayer;
+
+@property (nonatomic,weak) id<HNQQPopMenuViewDelegate> delegate;
+
+@property (nonatomic,strong) action clickAction;
+
+- (instancetype)initWithView:(UIView *)view items:(NSArray *)itemArr;
+
+
 
 @end

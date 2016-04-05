@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "HNQQPopMenuView.h"
+
+@class HNQQPopMenuManager;
 
 @interface HNQQPopMenuManager : NSObject
+
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate;
+
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action;
+
++ (void)dismiss;
 
 @end

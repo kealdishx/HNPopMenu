@@ -10,4 +10,14 @@
 
 @interface HNQQPopMenuModel : NSObject
 
+/**
+ *  menu cell's title
+ */
+@property (nonatomic,strong) NSString *title;
+
+/**
+ *  menu cell's image
+ */
+@property (nonatomic,strong) NSString *imageName;
+
 @end
