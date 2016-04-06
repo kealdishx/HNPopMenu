@@ -124,6 +124,7 @@ static const CGFloat margin = 10.0f;
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
     if ([self.delegate respondsToSelector:@selector(QQPopMenuView:didSelectRow:)]) {
         [self.delegate QQPopMenuView:self didSelectRow:indexPath.row];
         [HNQQPopMenuManager dismiss];
@@ -132,6 +133,10 @@ static const CGFloat margin = 10.0f;
         self.clickAction(indexPath.row);
         [HNQQPopMenuManager dismiss];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
 
