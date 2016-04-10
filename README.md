@@ -5,11 +5,11 @@
 ```objective-c
 [HNQQPopMenuManager showPopMenuWithView:<#view#> items:<#array#> action:^(NSInteger row) {
         NSLog(@"第%ld行被点击了",row);
-    }];
+    } dismissed:YES];
 ```
 ####2.delegate<br>
 ```objective-c
-[HNQQPopMenuManager showPopMenuWithView:<#view#> items:<#array#> delegate:<#delegate#>];
+[HNQQPopMenuManager showPopMenuWithView:<#view#> items:<#array#> delegate:<#delegate#> dismissed:YES];
 ```
 
 ![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif)
