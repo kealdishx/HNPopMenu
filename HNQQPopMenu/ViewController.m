@@ -37,15 +37,14 @@
     return _dataArr;
 }
 - (IBAction)addLeftPopMenu {
-    [HNQQPopMenuManager showPopMenuWithView:self.leftButton items:self.dataArr delegate:self];
+    [HNQQPopMenuManager showPopMenuWithView:self.leftButton items:self.dataArr delegate:self dismissAutomatically:YES];
 }
 
 - (IBAction)addRightPopMenu:(id)sender {
     [HNQQPopMenuManager showPopMenuWithView:self.rightButton items:self.dataArr action:^(NSInteger row) {
         NSLog(@"第%ld行被点击了",row);
-    }];
+    } dismissAutomatically:NO];
 }
-
 
 
 - (void)QQPopMenuView:(HNQQPopMenuView *)menuView didSelectRow:(NSInteger)row{

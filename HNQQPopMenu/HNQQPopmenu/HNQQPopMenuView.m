@@ -29,6 +29,7 @@ static const CGFloat margin = 10.0f;
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.15];
         _menuWidth = 150.0f;
         _cellHeight = 40.0f;
+        _dismissed = YES;
         CGPoint centerPoint = view.center;
         CGFloat tableViewY = CGRectGetMaxY(view.frame) + margin - 0.5 * _cellHeight * itemArr.count;
         CGFloat tableViewX = centerPoint.x - _menuWidth * 0.5 + _menuWidth * 0.5;
@@ -92,19 +93,6 @@ static const CGFloat margin = 10.0f;
     _tableView.rowHeight = _cellHeight;
 }
 
-//- (void)drawRect:(CGRect)rect {
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextBeginPath(context);
-//    CGFloat triangleLength = triangleHeight * 2.0 / 1.732;
-//    CGContextMoveToPoint(context, _startPoint.x, _startPoint.y);
-//    CGContextAddLineToPoint(context, _startPoint.x - triangleLength * 0.5, _startPoint.y + triangleHeight);
-//    CGContextAddLineToPoint(context, _startPoint.x + triangleLength * 0.5, _startPoint.y + triangleHeight);
-//    CGContextClosePath(context);
-//    [[UIColor whiteColor] setFill];
-//    [[UIColor whiteColor] setStroke];
-//    CGContextDrawPath(context, kCGPathFillStroke);
-//}
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [HNQQPopMenuManager dismiss];
 }
@@ -127,11 +115,11 @@ static const CGFloat margin = 10.0f;
     [self tableView:tableView didDeselectRowAtIndexPath:indexPath];
     if ([self.delegate respondsToSelector:@selector(QQPopMenuView:didSelectRow:)]) {
         [self.delegate QQPopMenuView:self didSelectRow:indexPath.row];
-        [HNQQPopMenuManager dismiss];
+        self.dismissed == YES ? [HNQQPopMenuManager dismiss] : nil;
     }
     if (self.clickAction) {
         self.clickAction(indexPath.row);
-        [HNQQPopMenuManager dismiss];
+        self.dismissed == YES ? [HNQQPopMenuManager dismiss] : nil;
     }
 }
 

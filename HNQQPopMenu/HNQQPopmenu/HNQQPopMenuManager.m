@@ -25,12 +25,20 @@
     return manager;
 }
 
-+ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate{
-    [[self sharedManager] showPopMenuWithView:view items:itemArr delegate:delegate];
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate dismissAutomatically:(BOOL)dismissed{
+    [[self sharedManager] showPopMenuWithView:view items:itemArr delegate:delegate dismissedAutomatically:dismissed];
 }
 
-+ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action{
-    [[self sharedManager] showPopMenuWithView:view items:itemArr action:action];
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action dismissAutomatically:(BOOL)dismissed{
+    [[self sharedManager] showPopMenuWithView:view items:itemArr action:action dismissedAutomatically:dismissed];
+}
+
++ (void)setBackgroundColor:(UIColor *)color{
+    [[self sharedManager] setBackgroundColour:color];
+}
+
++ (void)setBackgroundView:(UIView *)view{
+    [[self sharedManager] setBackView:view];
 }
 
 + (void)dismiss{
@@ -46,22 +54,35 @@
     self.popmenuView = [[HNQQPopMenuView alloc] initWithView:view items:itemArr];
     self.popmenuView.frame = [UIScreen mainScreen].bounds;
     [[UIApplication sharedApplication].keyWindow addSubview:self.popmenuView];
-    
     [UIView animateWithDuration:0.25f animations:^{
             self.popmenuView.tableView.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }];
     
 }
 
-- (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate{
+- (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate dismissedAutomatically:(BOOL)dismissed{
     [self showPopMenuWithView:view items:itemArr];
     self.popmenuView.delegate = delegate;
+    self.popmenuView.dismissed = dismissed;
 }
 
-- (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action{
+- (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action dismissedAutomatically:(BOOL)dismissed{
     [self showPopMenuWithView:view items:itemArr];
+    self.popmenuView.dismissed = dismissed;
     if (action) {
         self.popmenuView.clickAction = action;
+    }
+}
+
+- (void)setBackgroundColour:(UIColor *)color{
+    if (self.popmenuView) {
+        self.popmenuView.tableView.backgroundColor = color;
+    }
+}
+
+- (void)setBackView:(UIView *)view{
+    if (self.popmenuView) {
+        self.popmenuView.tableView.backgroundView = view;
     }
 }
 

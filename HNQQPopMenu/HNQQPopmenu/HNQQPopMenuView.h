@@ -41,6 +41,9 @@ typedef void (^action)(NSInteger row);
 
 @property (nonatomic,strong) action clickAction;
 
+@property (nonatomic,assign) BOOL dismissed;
+
+
 - (instancetype)initWithView:(UIView *)view items:(NSArray *)itemArr;
 
 

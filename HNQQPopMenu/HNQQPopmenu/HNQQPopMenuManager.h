@@ -14,9 +14,13 @@
 
 @interface HNQQPopMenuManager : NSObject
 
-+ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate;
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr delegate:(id<HNQQPopMenuViewDelegate>)delegate dismissAutomatically:(BOOL)dismissed;
 
-+ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action;
++ (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr action:(action)action dismissAutomatically:(BOOL)dismissed;
+
++ (void)setBackgroundColor:(UIColor *)color;
+
++ (void)setBackgroundView:(UIView *)view;
 
 + (void)dismiss;
 
