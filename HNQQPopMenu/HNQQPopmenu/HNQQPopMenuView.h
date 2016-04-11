@@ -39,7 +39,7 @@ typedef void (^action)(NSInteger row);
 
 @property (nonatomic,weak) id<HNQQPopMenuViewDelegate> delegate;
 
-@property (nonatomic,strong) action clickAction;
+@property (nonatomic,copy) action clickAction;
 
 @property (nonatomic,assign) BOOL dismissed;
 
