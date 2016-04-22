@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OS0-au-Jg1">
+                                <rect key="frame" x="534" y="20" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="9u3-3u-EGY"/>
+                                    <constraint firstAttribute="height" constant="30" id="RYD-jw-rFZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addRightPopMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nzI-BK-HKj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-s8-0Wr">
+                                <rect key="frame" x="31" y="20" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CuH-kF-pYv"/>
+                                    <constraint firstAttribute="width" constant="46" id="wgA-Bd-mes"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addLeftPopMenu" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lxn-O0-QUC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tKs-s8-0Wr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="11" id="DRa-Ot-X1W"/>
+                            <constraint firstItem="tKs-s8-0Wr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F5g-Id-eSM"/>
+                            <constraint firstItem="OS0-au-Jg1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IGD-Dd-pzN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OS0-au-Jg1" secondAttribute="trailing" id="k65-cE-WJR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="leftButton" destination="tKs-s8-0Wr" id="82W-SL-QA5"/>
+                        <outlet property="rightButton" destination="OS0-au-Jg1" id="4O8-Ib-UJj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="409"/>
+        </scene>
+    </scenes>
+</document>
