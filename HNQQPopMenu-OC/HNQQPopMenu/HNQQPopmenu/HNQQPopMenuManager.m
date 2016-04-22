@@ -45,19 +45,12 @@
     [[self sharedManager] dismiss];
 }
 
-
-- (instancetype)init{
-    [NSException raise:NSInvalidArgumentException format:@"%s Using the %@ initializer directly is not supported. Use %@ or %@ instead.", __PRETTY_FUNCTION__,NSStringFromSelector(@selector(init)),NSStringFromSelector(@selector(showPopMenuWithView:items:action:dismissedAutomatically:)),NSStringFromSelector(@selector(showPopMenuWithView:items:delegate:dismissedAutomatically:))];
-    return nil;
-}
-
 #pragma mark - implementation
 - (void)showPopMenuWithView:(UIView *)view items:(NSArray *)itemArr{
     if (self.popmenuView) {
         [self dismiss];
     }
     self.popmenuView = [[HNQQPopMenuView alloc] initWithView:view items:itemArr];
-    self.popmenuView.frame = [UIScreen mainScreen].bounds;
     [[UIApplication sharedApplication].keyWindow addSubview:self.popmenuView];
     [UIView animateWithDuration:0.25f animations:^{
             self.popmenuView.tableView.transform = CGAffineTransformMakeScale(1.0, 1.0);
@@ -81,7 +74,7 @@
 
 - (void)setBackgroundColour:(UIColor *)color{
     if (self.popmenuView) {
-        self.popmenuView.tableView.backgroundColor = color;
+        [self.popmenuView setTableViewBackgroundColor:color];
     }
 }
 

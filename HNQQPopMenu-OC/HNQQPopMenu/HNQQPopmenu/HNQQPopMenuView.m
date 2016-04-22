@@ -20,12 +20,13 @@ static const CGFloat margin = 10.0f;
 
 @property (nonatomic,assign) CGPoint startPoint;
 
+
 @end
 
 @implementation HNQQPopMenuView
 
 - (instancetype)initWithView:(UIView *)view items:(NSArray *)itemArr{
-    if (self = [super init]) {
+    if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.15];
         _menuWidth = 150.0f;
         _cellHeight = 40.0f;
@@ -65,12 +66,17 @@ static const CGFloat margin = 10.0f;
     [path addLineToPoint:CGPointMake(_startPoint.x + triangleLength * 0.5, _startPoint.y + triangleHeight)];
     CAShapeLayer *triangleLayer = [CAShapeLayer layer];
     triangleLayer.path = path.CGPath;
-    triangleLayer.fillColor = [UIColor whiteColor].CGColor;
-    triangleLayer.strokeColor = [UIColor whiteColor].CGColor;
+    triangleLayer.fillColor = self.tableView.backgroundColor.CGColor;
+    triangleLayer.strokeColor = self.tableView.backgroundColor.CGColor;
     self.triangleLayer = triangleLayer;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.layer addSublayer:triangleLayer];
     });
+}
+
+- (void)setTableViewBackgroundColor:(UIColor *)backgroundColor{
+    [self.triangleLayer removeFromSuperlayer];
+    [self drawTriangleLayer];
 }
 
 - (void)setMenuWidth:(CGFloat)menuWidth{
