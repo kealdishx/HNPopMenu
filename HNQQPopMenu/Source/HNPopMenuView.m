@@ -13,6 +13,7 @@
 
 static const CGFloat triangleHeight = 10.0f;
 static const CGFloat margin = 10.0f;
+#define screenHeight [UIScreen mainScreen].bounds.size.height
 
 @interface HNPopMenuView()<UITableViewDataSource,UITableViewDelegate>
 
@@ -28,26 +29,31 @@ static const CGFloat margin = 10.0f;
     if (self = [super initWithFrame:[UIScreen mainScreen].bounds]) {
         self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
         _menuWidth = 150.0f;
-        _cellHeight = 40.0f;
+        _cellHeight = 44.0f;
+        _limitMargin = 40.0f;
         _dismissed = YES;
-        CGPoint centerPoint = view.center;
-        CGFloat tableViewY = CGRectGetMaxY(view.frame) + margin - 0.5 * _cellHeight * itemArr.count;
-        CGFloat tableViewX = centerPoint.x - _menuWidth * 0.5 + _menuWidth * 0.5;
+        CGRect convertFrame = [view.superview convertRect:view.frame toView:self];
+        CGFloat viewCenterX = convertFrame.origin.x + convertFrame.size.width * 0.5;
+        CGFloat tableViewY = CGRectGetMaxY(convertFrame) + margin;
+        CGFloat tableViewX = viewCenterX - _menuWidth * 0.5 + _menuWidth * 0.5;
+        CGFloat orginTableViewH = _cellHeight * itemArr.count;
+        CGFloat tableViewH = (orginTableViewH + tableViewY + _limitMargin) <= screenHeight ? orginTableViewH : (screenHeight - tableViewY - _limitMargin);
+        tableViewY = tableViewY - 0.5 * tableViewH;
         if (tableViewX < margin + _menuWidth * 0.5) {
             tableViewX = margin - _menuWidth * 0.5;
         }
         else if (tableViewX + _menuWidth > [UIScreen mainScreen].bounds.size.width - margin){
             tableViewX = [UIScreen mainScreen].bounds.size.width - margin - _menuWidth * 0.5;
         }
-        _startPoint = CGPointMake(centerPoint.x, tableViewY - triangleHeight + 0.5 * _cellHeight * itemArr.count);
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(tableViewX, tableViewY, _menuWidth, _cellHeight * itemArr.count) style:UITableViewStylePlain];
+        _startPoint = CGPointMake(viewCenterX, tableViewY - triangleHeight + 0.5 * tableViewH);
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(tableViewX, tableViewY, _menuWidth, tableViewH) style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.layer.cornerRadius = 10.0f;
         _tableView.layer.masksToBounds = YES;
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.bounces = NO;
-        _tableView.layer.anchorPoint = centerPoint.x > [UIScreen mainScreen].bounds.size.width * 0.5 ? CGPointMake(1.0f, 0.0f) :CGPointMake(0.0f, 0.0f);
+        _tableView.layer.anchorPoint = viewCenterX > [UIScreen mainScreen].bounds.size.width * 0.5 ? CGPointMake(1.0f, 0.0f) :CGPointMake(0.0f, 0.0f);
         _tableView.transform = CGAffineTransformMakeScale(0.001, 0.001);
         _tableView.rowHeight = _cellHeight;
         _dataArr = itemArr;
@@ -57,7 +63,7 @@ static const CGFloat margin = 10.0f;
     return self;
 }
 
-- (void)drawTriangleLayer{
+- (void)drawTriangleLayer {
     CGFloat triangleLength = triangleHeight * 2.0 / 1.732;
     UIBezierPath *path = [UIBezierPath bezierPath];
     [path moveToPoint:_startPoint];
@@ -131,6 +137,5 @@ static const CGFloat margin = 10.0f;
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     
 }
-
 
 @end

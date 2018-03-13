@@ -28,9 +28,14 @@ typedef void (^action)(NSInteger row);
 @property (nonatomic,assign) CGFloat menuWidth;
 
 /**
- *  menu cell's height,default is 40.
+ *  menu cell's height,default is 44.
  */
 @property (nonatomic,assign) CGFloat cellHeight;
+
+/**
+ *  the longest distance between menuView and screen, default is 40.
+ */
+@property (nonatomic,assign) CGFloat limitMargin;
 
 // menuView's tableView,menu cell's container.
 @property (nonatomic,strong,readonly) UITableView *tableView;

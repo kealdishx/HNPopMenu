@@ -25,11 +25,11 @@
 - (NSArray *)dataArr{
     if (!_dataArr) {
         NSMutableArray *tempArr = [NSMutableArray array];
-        NSArray *titleArr = @[@"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱"];
-        for (int i = 1; i < 7; i++) {
+        NSArray *titleArr = @[@"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱", @"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱", @"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱", @"扫一扫",@"加好友",@"创建讨论组",@"发送到电脑",@"面对面快传",@"收钱"];
+        for (int i = 1; i < 20; i++) {
             HNPopMenuModel *model = [[HNPopMenuModel alloc] init];
             model.title = titleArr[i - 1];
-            model.imageName = [NSString stringWithFormat:@"menu_%d",i];
+            model.imageName = [NSString stringWithFormat:@"menu_%d",(i % 5) + 1];
             [tempArr addObject:model];
         }
         _dataArr = [tempArr mutableCopy];
