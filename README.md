@@ -1,7 +1,7 @@
 # HNPopMenu
 类似QQ和微信的弹出式菜单
 
-![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.gif)
+![](https://github.com/ZakariyyaSv/HNQQPopMenu/raw/master/demo.png)
 
 ### 用法
 
